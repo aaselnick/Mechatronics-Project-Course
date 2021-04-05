@@ -14,6 +14,7 @@ os.environ['DISPLAY'] = ':0'
 frameWidth = 640
 frameHeight = 480
 
+ipt = []
 #Establishes serial connection with the Arduino before the code can be run
 if __name__ == '__main__':
 	ser = serial.Serial('/dev/ttyUSB0', 115200, timeout=1)
@@ -68,8 +69,13 @@ def getContours(img,imgContour):
 			b = True
 			#return b
 
+### ser.write(str(Ready to Go).encode('utf-8'))
+ipt = input("Please Enter a Command: ")
+if ipt == "list":
+	print("List of Commands:   ")
+
 # Main loop of the script
-while True:
+while ipt ~= [] and ipt ~= "list":
 	_,frame = cap.read()
 	#print(len(frame))
 	imgContours = frame.copy()
@@ -94,7 +100,7 @@ while True:
 	#print(len(mask))
 
 	#imgGray and Canny are unused currently, haven't figured out if this is
-	#Something we would like to pursue in the future. 
+	#Something we would like to pursue in the future.
 	imgGray = cv2.cvtColor(imgBlur, cv2.COLOR_BGR2GRAY)
 	imgCanny = cv2.Canny(imgGray,threshold1,threshold2)
 	kernel = np.ones((5,5))
