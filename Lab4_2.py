@@ -69,11 +69,20 @@ def getContours(img,imgContour):
 			b = True
 			#return b
 
-### ser.write(str(Ready to Go).encode('utf-8'))
-ipt = input("Please Enter a Command: ")
-if ipt == "list":
-	print("List of Commands:   ")
+while ipt == []:
+	ipt = input("Please Enter a Command: ")
+	if ipt == "list":
+		print("List of Commands:   ")
+		print("Command:			What it Do:		Arduino Gets:")
+		print("")
+		print("F				  Forward	 	      70")
+		print("B		    	   Back			      66")
+		print("r     			  90deg CW 	         114")
+		print("Q  			     180deg CW 			  82")
+		print("L  				 FWD Line 			  76")
+		ipt = []
 
+	ser.write(char(ipt).encode('utf-8'))
 # Main loop of the script
 while ipt ~= [] and ipt ~= "list":
 	_,frame = cap.read()
