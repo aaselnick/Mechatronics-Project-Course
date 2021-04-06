@@ -5,6 +5,7 @@ from time import sleep
 from signal import pause
 import serial
 import os
+import keyboard
 
 #This line solves the issue of being unable to run the code in ssh given the
 #error "Cannot connect to X server"
@@ -87,7 +88,6 @@ def comnd(ipt):
 		print("Sending:   ",ipt)
 		ser.write(str(ipt).encode('utf-8'))
 		if ser.in_waiting > 0:
-			sleep(.5)
 			line = ser.readline().decode('utf-8').rstrip()
 			print(line)
 
@@ -98,6 +98,8 @@ while True:
 	ipt = []
 	comnd(ipt)
 	while ipt != [] and ipt != list and ipt == T:
+		if keyboard.is_pressed('b'):
+			break
 		_,frame = cap.read()
 		#print(len(frame))
 		imgContours = frame.copy()
