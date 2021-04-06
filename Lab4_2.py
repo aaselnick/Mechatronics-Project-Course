@@ -83,13 +83,13 @@ def comnd(ipt):
 			print("L  				 FWD Line 			  76")
 			ipt = []
 		else:
-			ipt = list(ipt)
-			ipt = ipt[1]
-		print("Sending:   ",ipt)
-		ser.write(str(ipt).encode('utf-8'))
-		if ser.in_waiting > 0:
-			line = ser.readline().decode('utf-8').rstrip()
-			print(line)
+			#ipt = list(ipt)
+			#ipt = ipt[1]
+			print("Sending:   ",ipt)
+			ser.write(str(ipt).encode('utf-8'))
+			if ser.in_waiting > 0:
+				line = ser.readline().decode('utf-8').rstrip()
+				print(line)
 
 
 # Main loop of the script
