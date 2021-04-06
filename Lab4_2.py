@@ -87,7 +87,8 @@ def comnd(ipt):
 			#ipt = ipt[1]
 			print("Sending:   ",ipt)
 			ser.write(str(ipt).encode('utf-8'))
-			if ser.in_waiting > 0:
+			sleep(.5)
+			while ser.in_waiting > 0:
 				line = ser.readline().decode('utf-8').rstrip()
 				print(line)
 
