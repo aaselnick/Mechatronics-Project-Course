@@ -98,7 +98,7 @@ def comnd(ipt):
 
 while True:
 	ipt = []
-	comnd(ipt)
+	ipt = comnd(ipt)
 	while ipt == "T":
 		if keyboard.is_pressed('b'):
 			break
@@ -160,7 +160,7 @@ while True:
 			ser.write(str(0).encode('utf-8'))
 
 		# Command to read back what was sent to the Arduino
-		if ser.in_waiting >0:
+		while ser.in_waiting > 0:
 			line = ser.readline().decode('utf-8').rstrip()
 			print(line)
 		# If this if statement is removed, the output will be just a still Image
