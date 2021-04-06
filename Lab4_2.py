@@ -86,6 +86,10 @@ def comnd(ipt):
 			ipt = ipt[1]
 		print("Sending:   ",ipt)
 		ser.write(str(ipt).encode('utf-8'))
+		if ser.in_waiting > 0:
+			sleep(.5)
+			line = ser.readline().decode('utf-8').rstrip()
+			print(line)
 
 
 # Main loop of the script
@@ -93,7 +97,7 @@ def comnd(ipt):
 while True:
 	ipt = []
 	comnd(ipt)
-	while ipt != [] and ipt != list:
+	while ipt != [] and ipt != list and ipt == T:
 		_,frame = cap.read()
 		#print(len(frame))
 		imgContours = frame.copy()
