@@ -98,7 +98,7 @@ def comnd(ipt):
 while True:
 	ipt = []
 	comnd(ipt)
-	while ipt != [] and ipt != list and ipt == T:
+	while ipt == 'T':
 		if keyboard.is_pressed('b'):
 			break
 		_,frame = cap.read()
