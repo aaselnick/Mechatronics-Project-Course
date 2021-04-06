@@ -104,7 +104,7 @@ while True:
 		_,frame = cap.read()
 		#print(len(frame))
 		imgContours = frame.copy()
-
+		print("Inside the Balloon while")
 		# Thresholds for contour stuff (unused as of now I think)
 		threshold1 = cv2.getTrackbarPos("T1: ","Thresholds")
 		threshold2 = cv2.getTrackbarPos("T2: ","Thresholds")
