@@ -91,6 +91,7 @@ def comnd(ipt):
 			while ser.in_waiting > 0:
 				line = ser.readline().decode('utf-8').rstrip()
 				print(line)
+	return ipt
 
 
 # Main loop of the script
@@ -98,7 +99,7 @@ def comnd(ipt):
 while True:
 	ipt = []
 	comnd(ipt)
-	while ipt == 'T':
+	while ipt == "T":
 		if keyboard.is_pressed('b'):
 			break
 		_,frame = cap.read()
