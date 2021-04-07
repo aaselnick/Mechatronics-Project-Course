@@ -39,11 +39,11 @@ cv2.resizeWindow("Thresholds", 640,240)
 #Generates the slider bar window with values pre-set for the Red balloon
 #as of now
 cv2.createTrackbar("H_HIGH ","Parameters", 255,255,empty)
-cv2.createTrackbar("S_HIGH ","Parameters", 233,255,empty)
-cv2.createTrackbar("V_HIGH ","Parameters", 247,255,empty)
-cv2.createTrackbar("H_LOW ", "Parameters", 103, 255, empty)
-cv2.createTrackbar("S_LOW ", "Parameters", 126,255,empty)
-cv2.createTrackbar("V_LOW ","Parameters", 119, 255,empty)
+cv2.createTrackbar("S_HIGH ","Parameters", 218,255,empty)
+cv2.createTrackbar("V_HIGH ","Parameters", 255,255,empty)
+cv2.createTrackbar("H_LOW ", "Parameters", 0, 255, empty)
+cv2.createTrackbar("S_LOW ", "Parameters", 117,255,empty)
+cv2.createTrackbar("V_LOW ","Parameters", 151, 255,empty)
 #cv2.createTrackbar("T1: ","Thresholds")
 #cv2.createTrackbar("T2: ","Thresholds")
 
@@ -100,12 +100,12 @@ while True:
 	ipt = []
 	ipt = comnd(ipt)
 	while ipt == "T":
-		if keyboard.is_pressed('b'):
-			break
+		#if keyboard.is_pressed('b'):
+		#	break
 		_,frame = cap.read()
 		#print(len(frame))
 		imgContours = frame.copy()
-		print("Inside the Balloon while")
+		#print("Inside the Balloon while")
 		# Thresholds for contour stuff (unused as of now I think)
 		threshold1 = cv2.getTrackbarPos("T1: ","Thresholds")
 		threshold2 = cv2.getTrackbarPos("T2: ","Thresholds")
@@ -121,7 +121,7 @@ while True:
 		#testBlur = cv2.GaussianBlur(frame,(7,7),1)
 		# mask is the masked image of the blured hsv that seeks values of h,s,and v
 		# within the specified bounds
-		mask = cv2.inRange(imgBlur, lg, ug)
+		mask = cv2.inRange(hsv, lg, ug)
 
 		#print(len(mask))
 
