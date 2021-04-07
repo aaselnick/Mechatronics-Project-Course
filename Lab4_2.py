@@ -118,7 +118,7 @@ while True:
 		# imgBlue is a blured version of the original hsv masked image such that
 		# higher quality contours can be drawn around the ballons
 		imgBlur = cv2.GaussianBlur(hsv,(7,7),1)
-
+		#testBlur = cv2.GaussianBlur(frame,(7,7),1)
 		# mask is the masked image of the blured hsv that seeks values of h,s,and v
 		# within the specified bounds
 		mask = cv2.inRange(imgBlur, lg, ug)
@@ -138,7 +138,10 @@ while True:
 	#	Image outputs for the pure image, the masked image, and the contours
 
 		cv2.imshow("Frame: ",frame)
+		cv2.imshow("HSV:   ",hsv)
+		cv2.imshow("HSV Blur  ", imgBlur)
 		cv2.imshow("Mask: ",mask)
+		cv2.imshow("imgDil",imgDil)
 		cv2.imshow("Contours: ", imgContours)
 		print(b)
 		#print(area)
